@@ -96,20 +96,6 @@ const Career = () => {
   const totalMonths = calculateTotalMonths(allPeriods);
   const totalExperience = formatTotalExperience(totalMonths);
 
-  // Define a set of unique colors for each experience (horror-themed)
-  const experienceColors = [
-    '#8B0000', // dark red
-    '#B22222', // firebrick
-    '#DC143C', // crimson
-    '#FF0000', // red
-    '#FF4500', // orange red
-    '#FF6347', // tomato
-    '#FF8C00', // dark orange
-    '#FFA500', // orange
-    '#FFD700', // gold
-    '#FFFF00', // yellow
-  ];
-
   return (
     <div className="career-section section-container">
       <div className="career-container">
@@ -125,11 +111,11 @@ const Career = () => {
         </div>
 
         <div className="career-info">
-          {professionalExperiences.map((exp, index) => (
+          <div className="career-timeline">
+            <div className="career-dot"></div>
+          </div>
+          {config.experiences.map((exp, index) => (
             <div key={index} className="career-info-box">
-              {/* Dot with unique color */}
-              <div className="career-dot" style={{ backgroundColor: experienceColors[index % experienceColors.length] }}></div>
-              
               <div className="career-info-in">
                 <div className="career-role">
                   <h4>{exp.position}</h4>

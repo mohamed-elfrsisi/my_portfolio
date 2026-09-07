@@ -1,11 +1,58 @@
+/* =========================================
+   WORK — black + blood-red horror
+   Palette is now just three notes: near-black, red, and
+   bone-white text. No brown/amber warmth left anywhere —
+   including the image frames, which previously fell back
+   to a pale cream when an image was missing or loading.
+========================================= */
+
+.work-section {
+  --work-black: #05040a;
+}
+
 .work-section h2 {
   margin-top: 100px;
   font-size: 70px;
   font-weight: 500;
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background:
+    linear-gradient(45deg, transparent 45%, rgba(153,0,0,0.22) 45%, rgba(153,0,0,0.22) 55%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, rgba(153,0,0,0.22) 45%, rgba(153,0,0,0.22) 55%, transparent 55%);
+  background-size: 4px 4px;
+  color: #fff;
+  text-shadow: 2px 2px 0px #000, -2px -2px 0px #000;
+  animation: candleFlicker 6s ease-in-out infinite;
 }
 
-.work-section h2>span {
-  color: var(--accentColor);
+@keyframes candleFlicker {
+  0%,
+  100% {
+    text-shadow: 2px 2px 0px #000, -2px -2px 0px #000;
+    opacity: 1;
+  }
+  42% {
+    text-shadow: 2px 2px 0px #000, -2px -2px 0px #000;
+    opacity: 1;
+  }
+  44% {
+    text-shadow: 2px 2px 1px #000, -2px -2px 1px #000;
+    opacity: 0.88;
+  }
+  46% {
+    text-shadow: 2px 2px 0px #000, -2px -2px 0px #000;
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.92;
+  }
+  82% {
+    opacity: 1;
+  }
 }
 
 .work-section {
@@ -13,6 +60,58 @@
   height: 100vh;
   box-sizing: border-box;
   will-change: transform;
+  /* Old paper texture, now on a near-black ground instead
+     of the brownish gradient that was here — the warmth
+     was the last thing reading as "aged" rather than
+     "horror". */
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(153,0,0,0.05) 10px,
+      rgba(153,0,0,0.05) 15px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(153,0,0,0.05) 10px,
+      rgba(153,0,0,0.05) 15px
+    ),
+    linear-gradient(to bottom, #0a0709 0%, #030203 100%);
+  background-color: var(--backgroundColor, #030203);
+  position: relative;
+  overflow: hidden;
+}
+
+.work-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(153,0,0,0.12) 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, rgba(90,0,0,0.14) 0%, transparent 20%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Heavier vignette — the black now does more of the work
+   of framing the section than the old brown gradient did. */
+.work-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .work-container {
@@ -21,6 +120,8 @@
   flex-direction: column;
   height: 100%;
   align-content: stretch;
+  position: relative;
+  z-index: 1;
 }
 
 .work-flex {
@@ -38,10 +139,52 @@
   flex-direction: column;
   width: 600px;
   box-sizing: border-box;
-  border-right: 1px solid #363636;
+  border-right: 2px dashed rgba(153,0,0,0.3);
   flex-shrink: 0;
   gap: 50px;
   justify-content: start;
+  background: rgba(3,2,3,0.7);
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  border-left: 2px solid rgba(153,0,0,0.2);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+  transition: border-left-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.work-box:hover {
+  border-left-color: rgba(153,0,0,0.65);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 0 24px rgba(153,0,0,0.18);
+}
+
+/* Category legend colors — kept distinct from the base
+   red/black palette so they still work as signal colors. */
+.work-box[data-category="ai"] {
+  border-left-color: rgba(61, 90, 107, 0.4);
+}
+
+.work-box[data-category="fullstack"] {
+  border-left-color: rgba(79, 107, 71, 0.4);
+}
+
+.work-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(153,0,0,0.1) 1px,
+      rgba(153,0,0,0.1) 2px
+    );
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .work-flex .work-box:nth-child(even) {
@@ -51,9 +194,9 @@
 .work-flex::before,
 .work-flex::after {
   content: "";
-  width: calc(50000vw);
+  width: 300vw;
   height: 1px;
-  background-color: #363636;
+  background-color: rgba(153,0,0,0.2);
   position: absolute;
   left: 50%;
   top: 0;
@@ -80,19 +223,31 @@
   line-height: 50px;
   margin: 0;
   font-weight: 600;
+  color: #eae5ec;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
 }
 
 .work-info h4 {
   font-size: 26px;
   font-weight: 500;
   margin: 0;
+  color: var(--work-red);
+}
+
+.work-box[data-category="ai"] .work-info h4 {
+  color: var(--duskBlue);
+}
+
+.work-box[data-category="fullstack"] .work-info h4 {
+  color: var(--mossGreen);
 }
 
 .work-info p {
   font-weight: 200;
-  color: #adacac;
+  color: #918f8f;
   margin: 0;
   margin-top: 3px;
+  line-height: 1.6;
 }
 
 .work-info>p {
@@ -103,17 +258,29 @@
   display: flex;
   width: 100%;
   justify-content: center;
+  position: relative;
+  background-color: var(--work-black);
 }
 
 .work-image-in {
   position: relative;
+  border: 2px solid rgba(153,0,0,0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--work-black);
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  transition: border-color 0.4s ease;
+}
+
+.work-image a:hover .work-image-in {
+  border-color: rgba(153,0,0,0.6);
 }
 
 .work-link {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background-color: var(--backgroundColor);
+  background-color: var(--work-black);
   width: 50px;
   border-radius: 50px;
   height: 50px;
@@ -121,10 +288,12 @@
   justify-content: center;
   align-items: center;
   font-size: 25px;
-  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.5),
-    inset 0px 0px 10px 0px #393939;
+  color: var(--work-red);
+  box-shadow: 0px 0px 12px 0px rgba(153,0,0,0.5),
+    inset 0px 0px 10px 0px rgba(153,0,0,0.25);
   transition: 0.3s;
   opacity: 0;
+  border: 1px solid rgba(153,0,0,0.3);
 }
 
 .work-image a:hover {
@@ -141,13 +310,54 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #000;
+  background-color: var(--work-black);
   object-fit: cover;
 }
 
+/* Images (and the broken-image icon, if one hasn't loaded)
+   now sit on black instead of the browser's default pale
+   background — that pale box was the biggest thing making
+   this section look off-theme in practice. */
 .work-image img {
   max-width: 100%;
   max-height: 350px;
+  border-radius: 4px;
+  background-color: var(--work-black);
+  filter: sepia(0.2) saturate(0.6) contrast(1) brightness(0.75);
+  transition: transform 0.3s, filter 0.4s;
+}
+
+.work-image img:hover {
+  transform: scale(1.02);
+  filter: sepia(0) saturate(1) contrast(1.05) brightness(0.95);
+}
+
+.work-image-in::before,
+.work-image-in::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(153,0,0,0.3);
+  background: var(--work-black);
+}
+.work-image-in::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+.work-image-in::after {
+  bottom: -2px;
+  right: -2px;
+  border-top: none;
+  border-left: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-section h2 {
+    animation: none;
+  }
 }
 
 @media only screen and (max-height: 900px) {
@@ -195,7 +405,7 @@
   }
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1000px) {
   .work-box {
     width: 350px;
     padding: 30px;
@@ -222,76 +432,6 @@
   }
 }
 
-/* @media only screen and (max-width: 900px) {
-  .work-image img {
-    max-height: 200px;
-  }
-  .work-section h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  .work-box {
-    gap: 20px;
-  }
-} */
-@media only screen and (max-width: 1025px) {
-  .work-container {
-    align-content: normal;
-  }
-
-  .work-flex {
-    height: auto;
-  }
-}
-
-/* See All Works CTA Box */
-.work-box-cta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: none;
-}
-
-.see-all-works {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-}
-
-.see-all-works h3 {
-  font-size: 32px;
-  font-weight: 500;
-  color: #fff;
-}
-
-.see-all-works p {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 250px;
-}
-
-.see-all-btn {
-  display: inline-block;
-  padding: 15px 35px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #000;
-  background: var(--accentColor);
-  border-radius: 30px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-
-.see-all-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(194, 164, 255, 0.4);
-}
-
-/* Mobile: Stack work items vertically when GSAP pinning is disabled */
 @media only screen and (max-width: 768px) {
   .work-section {
     height: auto;
@@ -310,8 +450,9 @@
     max-width: 100%;
     padding: 30px 15px;
     border-right: none;
-    border-bottom: 1px solid #363636;
+    border-bottom: 2px dashed rgba(153,0,0,0.3);
     gap: 20px;
+    border-left: 2px solid rgba(153,0,0,0.2);
   }
 
   .work-flex .work-box:nth-child(even) {
@@ -349,4 +490,60 @@
   .see-all-works p {
     font-size: 14px;
   }
+}
+
+.work-box-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: none;
+  background: rgba(3,2,3,0.75);
+  border: 2px solid rgba(153,0,0,0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.see-all-works {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.see-all-works h3 {
+  font-size: 32px;
+  font-weight: 500;
+  color: #eae5ec;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.see-all-works p {
+  font-size: 16px;
+  color: #918f8f;
+  max-width: 250px;
+  line-height: 1.6;
+}
+
+.see-all-btn {
+  display: inline-block;
+  padding: 15px 35px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #eae5ec;
+  background: var(--work-red);
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 0 8px rgba(153,0,0,0.5);
+}
+
+.see-all-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(153,0,0,0.4), 0 0 20px rgba(153,0,0,0.3);
+  background: #5c0c10; /* near-black red on hover */
 }

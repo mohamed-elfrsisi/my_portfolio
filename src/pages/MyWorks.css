@@ -12,7 +12,6 @@
 
 .back-button {
   display: inline-block;
-  color: var(--accentColor);
   text-decoration: none;
   font-size: 16px;
   margin-bottom: 30px;
@@ -34,9 +33,6 @@
   color: #fff;
 }
 
-.myworks-header h1 span {
-  color: var(--accentColor);
-}
 
 .myworks-header p {
   font-size: 18px;

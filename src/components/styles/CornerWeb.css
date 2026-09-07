@@ -1,0 +1,90 @@
+/* corner cobweb — old-web nostalgia, paired with the dbana fly cursor */
+
+.corner-web {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.9;
+}
+
+.corner-web svg {
+  display: block;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.35));
+}
+
+.spider {
+  position: absolute;
+  top: 0;
+  left: 88px;
+}
+
+.spider-thread {
+  width: 1px;
+  height: 56px;
+  margin: 0 auto;
+  background: rgba(139,94,108,0.4);
+}
+
+.spider-body {
+  position: relative;
+  width: 12px;
+  height: 14px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #5d3b44 0%, #24181c 65%, #0a0608 100%);
+  border: 1px solid rgba(139,94,108,0.8);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.55);
+  animation: spider-sway 3.4s ease-in-out infinite;
+}
+
+.spider-leg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13px;
+  height: 10px;
+  border-top: 1px solid rgba(153, 0, 0, 0.8);
+  border-radius: 50% 0 0 0;
+  transform-origin: 0 0;
+}
+
+.spider-leg--l1 { transform: rotate(-55deg); }
+.spider-leg--l2 { transform: rotate(-30deg); }
+.spider-leg--l3 { transform: rotate(-5deg) scaleY(-1); }
+.spider-leg--l4 { transform: rotate(20deg) scaleY(-1); }
+.spider-leg--r1 { transform: rotate(235deg) scaleX(-1); }
+.spider-leg--r2 { transform: rotate(210deg) scaleX(-1); }
+.spider-leg--r3 { transform: rotate(185deg) scaleX(-1) scaleY(-1); }
+.spider-leg--r4 { transform: rotate(160deg) scaleX(-1) scaleY(-1); }
+
+@keyframes spider-sway {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  50%      { transform: translateX(2px) rotate(3deg); }
+}
+
+/* the "it noticed the fly" state — legs twitch faster, glow intensifies */
+.spider-alert .spider-body {
+  animation: spider-sway 0.4s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(139,94,108,0.8);
+}
+
+@media (max-width: 640px) {
+  .corner-web {
+    width: 120px;
+    height: 120px;
+  }
+  .corner-web svg {
+    width: 120px;
+    height: 120px;
+  }
+  .spider {
+    left: 53px;
+  }
+  .spider-thread {
+    height: 32px;
+  }
+}

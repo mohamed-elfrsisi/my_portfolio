@@ -69,7 +69,7 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/" className="navbar-title" data-cursor="disable">
-          {config.developer.name}.dev
+          farsisi.dev
         </a>
         <a
           href={`mailto:${config.contact.email}`}

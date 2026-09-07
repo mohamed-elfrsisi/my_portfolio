@@ -8,27 +8,17 @@
   line-height: 1.5;
   scroll-behavior: smooth;
   color-scheme: light dark;
-  --mossGreen: #4f6b47;      /* moss on old wood — "stable / complete" */
---mossGreenDim: #35452f;
---duskBlue: #3d5a6b;       /* moonlight through a dusty window — "data / AI" */
---duskBlueDim: #28394a;
---ominousPurple: #5a3d7a;  /* twilight haze — "ominous / metaphysical" */
---feverYellow: #8b6914;    /* fever dream — "obsessive craft" */
---emberOrange: #cc7a32;    /* glowing embers — "warm / everyday" */
---dustyPink: #8b5e6c;      /* faded roses — "empathy / goodbye" */
---accentColor: #8b0000;    /* blood dried to rust — "brand accent" */
---accentColorDim: #5a0000;
 
-
-  /* --- horror palette --- */
-  /* blood red accent */
-  /* --accentColor: #990000; */
-  /* --accentColorDim: #660000; */
+  /* --- old house / horror palette --- */
+  /* sickly graveyard green — the site-wide accent, same tone the skeletal
+     cursor glows with. single source of truth for every purple this replaced. */
+  --accentColor: #6f8f63;
+  --accentColorDim: #4d6144;
 
   /* deep attic dark, warm rather than pure black */
   --backgroundColor: #0f0b0d;
 
-  /* aged wood + candlelight, the warm counterpoint to the cold red */
+  /* aged wood + candlelight, the warm counterpoint to the cold green */
   --woodColor: #3a2a22;
   --candleColor: #d9a15c;
   --dustColor: #cabfae;

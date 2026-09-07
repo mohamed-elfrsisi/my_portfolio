@@ -3,7 +3,8 @@ import { RGBELoader } from "three-stdlib";
 import { gsap } from "gsap";
 
 const setLighting = (scene: THREE.Scene) => {
-  const directionalLight = new THREE.DirectionalLight(0xc7a9ff, 0);
+  // warm candlelight instead of purple — the character's key light
+  const directionalLight = new THREE.DirectionalLight(0xd9a15c, 0);
   directionalLight.intensity = 0;
   directionalLight.position.set(-0.47, -0.32, -1);
   directionalLight.castShadow = true;
@@ -13,7 +14,8 @@ const setLighting = (scene: THREE.Scene) => {
   directionalLight.shadow.camera.far = 50;
   scene.add(directionalLight);
 
-  const pointLight = new THREE.PointLight(0xc2a4ff, 0, 100, 3);
+  // dark aged-wood tone for the fill/point light, so shadows read as neutral/warm-dark rather than tinted purple
+  const pointLight = new THREE.PointLight(0x3a2a22, 0, 100, 3);
   pointLight.position.set(3, 12, 4);
   pointLight.castShadow = true;
   scene.add(pointLight);
@@ -34,8 +36,10 @@ const setLighting = (scene: THREE.Scene) => {
       pointLight.intensity = 0;
     }
   }
+
   const duration = 2;
   const ease = "power2.inOut";
+
   function turnOnLights() {
     gsap.to(scene, {
       environmentIntensity: 0.64,
