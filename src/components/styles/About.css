@@ -1,104 +1,113 @@
 .about-section {
+  width: var(--cWidth);
+  min-height: var(--vh);
+  margin: 0 auto;
+
   display: flex;
   align-items: center;
-  justify-content: left;
-  place-items: center;
+  justify-content: flex-start;
+
   position: relative;
-  opacity: 1;
-  height: auto;
-  width: var(--cWidth);
-  margin: auto;
 }
+
 .about-me {
-  padding: 40px 0px;
-  padding-bottom: 0;
   width: 100%;
-  max-width: calc(100% - 15px);
+  padding: 40px 0;
 }
+
 .about-me h3 {
+  margin: 0 0 15px;
+
   font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+
   text-transform: uppercase;
   letter-spacing: 4px;
-  font-weight: 600;
+
   color: var(--duskBlue);
-  margin-bottom: 15px;
+
   text-shadow: 0 0 8px rgba(61, 90, 107, 0.6);
 }
 
-.about-me p {
+.about-description {
+  margin: 0;
+
   font-size: 20px;
   font-weight: 700;
-  line-height: 26px;
+  line-height: 1.3;
+
   letter-spacing: 0.5px;
-  word-spacing: 2px;
+  word-spacing: normal;
+
   color: #eae5ec;
-  text-shadow: 0 0 4px rgba(0,0,0,0.3);
+
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+
+  /* Keeps the line breaks from config.ts */
+  white-space: pre-line;
 }
 
-.about-me .split-word {
-  display: inline-block;
-  margin-right: 0.3em;
-}
 
-.about-me .split-line {
-  display: block;
-}
+/* ========================================
+   TABLET
+   ======================================== */
 
-@media only screen and (min-width: 600px) {
+@media (min-width: 600px) {
   .about-section {
     justify-content: center;
   }
+
   .about-me {
     width: 500px;
   }
+
   .about-me h3 {
     font-size: 22px;
     letter-spacing: 6px;
   }
-  .about-me p {
+
+  .about-description {
     font-size: 28px;
-    line-height: 32px;
+    line-height: 1.15;
   }
 }
-@media only screen and (min-width: 768px) {
-  .about-me {
-    width: 500px;
-    max-width: calc(100% - 70px);
-    transform: translateY(0%);
+
+
+/* ========================================
+   DESKTOP
+   ======================================== */
+
+@media (min-width: 1025px) {
+  .about-section {
+    max-width: 1920px;
+    justify-content: flex-end;
   }
+
+  .about-me {
+    width: 50%;
+    padding: 0;
+  }
+
   .about-me h3 {
     font-size: 25px;
     letter-spacing: 7px;
   }
-  .about-me p {
-    font-size: 33px;
-    line-height: 36px;
-  }
-  .about-section {
-    opacity: 1;
-  }
-}
-@media only screen and (min-width: 1025px) {
-  .about-section {
-    width: var(--cWidth);
-    justify-content: right;
-    max-width: 1920px;
-    height: var(--vh);
-    padding: 0px;
-    opacity: 1;
-  }
-  .about-me {
-    padding: 0px;
-    width: 50%;
-  }
-  .about-me p {
+
+  .about-description {
     font-size: 1.9vw;
-    line-height: 2.3vw;
+    line-height: 1.21;
   }
 }
-@media only screen and (min-width: 1950px) {
-  .about-me p {
+
+
+/* ========================================
+   LARGE DESKTOP
+   ======================================== */
+
+@media (min-width: 1950px) {
+  .about-description {
     font-size: 2.5rem;
-    line-height: 2.7rem;
+    line-height: 1.08;
   }
 }

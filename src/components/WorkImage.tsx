@@ -2,42 +2,67 @@ import { useState } from "react";
 import { MdArrowOutward } from "react-icons/md";
 
 interface Props {
-  image: string;
+  image?: string;
   alt?: string;
   video?: string;
   link?: string;
 }
 
-const WorkImage = (props: Props) => {
-  const [isVideo, setIsVideo] = useState(false);
-  const [video, setVideo] = useState("");
-  const handleMouseEnter = async () => {
-    if (props.video) {
-      setIsVideo(true);
-      const response = await fetch(`src/assets/${props.video}`);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      setVideo(blobUrl);
-    }
-  };
+const WorkImage = ({ image, alt, video, link }: Props) => {
+  const [isHovering, setIsHovering] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+
+  const showVideo = isHovering && videoReady;
 
   return (
     <div className="work-image">
       <a
         className="work-image-in"
-        href={props.link}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={() => setIsVideo(false)}
-        target="_blank"
-        data-cursor={"disable"}
+        href={link || "#"}
+        target={link ? "_blank" : undefined}
+        rel={link ? "noopener noreferrer" : undefined}
+        data-cursor="disable"
+        onClick={(e) => {
+          if (!link) {
+            e.preventDefault();
+          }
+        }}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
       >
-        {props.link && (
+        {link && (
           <div className="work-link">
             <MdArrowOutward />
           </div>
         )}
-        <img src={props.image} alt={props.alt} />
-        {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
+
+        {image && (
+          <img
+            className={`work-image-preview ${
+              showVideo ? "video-active" : ""
+            }`}
+            src={image}
+            alt={alt || ""}
+          />
+        )}
+
+        {video && (
+          <video
+            className={`work-video ${
+              showVideo ? "video-active" : ""
+            }`}
+            src={video}
+            autoPlay
+            muted
+            playsInline
+            loop
+            preload="auto"
+            onCanPlay={() => setVideoReady(true)}
+            onError={(e) => {
+              console.error("Video failed to load:", video, e);
+            }}
+          />
+        )}
       </a>
     </div>
   );

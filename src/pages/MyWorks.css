@@ -1,138 +1,536 @@
+/* =========================================
+   MY WORKS PAGE
+   ========================================= */
+
 .myworks-page {
   min-height: 100vh;
-  background-color: var(--backgroundColor);
-  padding: 80px 40px;
+
   box-sizing: border-box;
+
+  padding: 80px 40px;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(153, 0, 0, 0.08),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(90, 0, 0, 0.08),
+      transparent 25%
+    ),
+    linear-gradient(
+      to bottom,
+      #0a0709 0%,
+      #030203 100%
+    );
+
+  color: #fff;
+
+  position: relative;
 }
+
+
+/* =========================================
+   HEADER
+   ========================================= */
 
 .myworks-header {
   text-align: center;
+
   margin-bottom: 60px;
 }
 
+
 .back-button {
   display: inline-block;
-  text-decoration: none;
-  font-size: 16px;
-  margin-bottom: 30px;
-  transition: all 0.3s ease;
+
   padding: 10px 20px;
-  border: 1px solid var(--accentColor);
+
+  margin-bottom: 30px;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  color: #eae5ec;
+
+  border: 1px solid rgba(153, 0, 0, 0.5);
+
   border-radius: 30px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
+
 
 .back-button:hover {
-  background: var(--accentColor);
-  color: #000;
+  background: #990000;
+
+  color: #fff;
+
+  border-color: #990000;
+
+  transform: translateY(-2px);
 }
 
+
+/* =========================================
+   HEADER TITLE
+   ========================================= */
+
 .myworks-header h1 {
+  margin: 0 0 15px;
+
   font-size: 70px;
+
+  line-height: 1.1;
+
   font-weight: 500;
-  margin-bottom: 15px;
+
   color: #fff;
+
+  text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000;
+}
+
+
+.myworks-header h1 span {
+  color: var(--accentColor, #990000);
 }
 
 
 .myworks-header p {
+  margin: 0;
+
   font-size: 18px;
+
   color: rgba(255, 255, 255, 0.6);
 }
 
+
+/* =========================================
+   PROJECT GRID
+   ========================================= */
+
 .myworks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
+  width: 100%;
+
   max-width: 1400px;
+
   margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(350px, 1fr)
+    );
+
+  gap: 30px;
 }
 
+
+/* =========================================
+   PROJECT CARD
+   ========================================= */
+
 .myworks-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: all 0.3s ease;
   position: relative;
+
+  overflow: hidden;
+
+  background:
+    rgba(3, 2, 3, 0.75);
+
+  border: 1px solid rgba(153, 0, 0, 0.25);
+
+  border-radius: 15px;
+
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
+
 
 .myworks-card:hover {
   transform: translateY(-10px);
-  border-color: var(--accentColor);
-  box-shadow: 0 20px 40px rgba(194, 164, 255, 0.15);
+
+  border-color: rgba(153, 0, 0, 0.7);
+
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, 0.45),
+    0 20px 45px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(153, 0, 0, 0.12);
 }
+
+
+/* =========================================
+   CARD NUMBER
+   ========================================= */
 
 .myworks-card-number {
   position: absolute;
+
   top: 15px;
   left: 15px;
-  font-size: 14px;
-  color: var(--accentColor);
-  font-weight: 600;
-  background: rgba(0, 0, 0, 0.5);
+
   padding: 5px 12px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #eae5ec;
+
+  background:
+    rgba(0, 0, 0, 0.7);
+
+  border: 1px solid rgba(153, 0, 0, 0.35);
+
   border-radius: 20px;
-  z-index: 1;
+
+  z-index: 10;
+
+  backdrop-filter: blur(5px);
 }
+
+
+/* =========================================
+   MEDIA CONTAINER
+   ========================================= */
 
 .myworks-card-image {
   width: 100%;
-  height: 220px;
+
+  height: 240px;
+
+  position: relative;
+
   overflow: hidden;
+
+  background: #05040a;
 }
 
-.myworks-card-image img {
+
+/* =========================================
+   IMAGE
+   ========================================= */
+
+.myworks-image {
+  position: absolute;
+
+  inset: 0;
+
   width: 100%;
   height: 100%;
+
+  display: block;
+
   object-fit: cover;
-  transition: transform 0.3s ease;
+
+  opacity: 1;
+
+  z-index: 1;
+
+  filter:
+    sepia(0.2)
+    saturate(0.6)
+    brightness(0.75)
+    contrast(1);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s ease,
+    filter 0.35s ease;
 }
 
-.myworks-card:hover .myworks-card-image img {
+
+.myworks-card:hover .myworks-image {
   transform: scale(1.05);
+
+  filter:
+    sepia(0)
+    saturate(1)
+    brightness(0.95)
+    contrast(1.05);
 }
+
+
+.myworks-image-hidden {
+  opacity: 0;
+}
+
+
+/* =========================================
+   VIDEO
+   ========================================= */
+
+.myworks-video {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  background: #05040a;
+
+  opacity: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s ease;
+}
+
+
+.myworks-video-visible {
+  opacity: 1;
+}
+
+
+/* =========================================
+   VIDEO INDICATOR
+   ========================================= */
+
+.video-indicator {
+  position: absolute;
+
+  right: 15px;
+  bottom: 15px;
+
+  padding: 6px 10px;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 1px;
+
+  color: #fff;
+
+  background:
+    rgba(0, 0, 0, 0.75);
+
+  border: 1px solid rgba(153, 0, 0, 0.45);
+
+  border-radius: 20px;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease;
+}
+
+
+/* =========================================
+   MEDIA CORNER EFFECT
+   ========================================= */
+
+.myworks-card-image::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(153, 0, 0, 0.08) 2px,
+      rgba(153, 0, 0, 0.08) 3px
+    );
+
+  pointer-events: none;
+
+  z-index: 6;
+}
+
+
+/* =========================================
+   CARD INFO
+   ========================================= */
 
 .myworks-card-info {
   padding: 25px;
 }
 
+
 .myworks-card-info h3 {
+  margin: 0 0 8px;
+
   font-size: 20px;
+
+  line-height: 1.4;
+
   font-weight: 500;
-  margin-bottom: 8px;
+
   color: #fff;
 }
 
+
 .myworks-card-category {
+  margin: 0 0 12px;
+
   font-size: 14px;
-  color: var(--accentColor);
-  margin-bottom: 12px;
+
+  color: var(--accentColor, #990000);
 }
+
 
 .myworks-card-description {
+  margin: 0 0 15px;
+
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
+
   line-height: 1.6;
-  margin-bottom: 15px;
+
+  color: rgba(255, 255, 255, 0.75);
 }
+
 
 .myworks-card-tech {
+  margin: 0;
+
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
+
   line-height: 1.5;
+
+  color: rgba(255, 255, 255, 0.5);
 }
 
-/* Responsive */
+
+/* =========================================
+   PROJECT LINK
+   ========================================= */
+
+.project-link-indicator {
+  margin-top: 20px;
+
+  padding-top: 15px;
+
+  border-top: 1px solid rgba(153, 0, 0, 0.2);
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  transition:
+    color 0.3s ease;
+}
+
+
+.myworks-card:hover .project-link-indicator {
+  color: #fff;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
 @media only screen and (max-width: 768px) {
   .myworks-page {
     padding: 60px 20px;
   }
 
+
+  .myworks-header {
+    margin-bottom: 40px;
+  }
+
+
   .myworks-header h1 {
     font-size: 45px;
   }
 
+
+  .myworks-header p {
+    font-size: 15px;
+  }
+
+
   .myworks-grid {
     grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+
+  .myworks-card-image {
+    height: 220px;
+  }
+
+
+  .myworks-card-info {
+    padding: 20px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media only screen and (max-width: 480px) {
+  .myworks-page {
+    padding: 40px 15px;
+  }
+
+
+  .myworks-header h1 {
+    font-size: 38px;
+  }
+
+
+  .myworks-card-image {
+    height: 200px;
+  }
+
+
+  .myworks-card-info h3 {
+    font-size: 18px;
+  }
+
+
+  .myworks-card-description {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .myworks-card,
+  .myworks-image,
+  .myworks-video,
+  .back-button {
+    transition: none;
   }
 }

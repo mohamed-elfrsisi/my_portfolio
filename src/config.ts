@@ -1,3 +1,12 @@
+// import erbThumb from "./assets/erb-thumb.jpg";
+import erbVideo from "./assets/erb.mp4";
+
+import nasaImage from "./assets/nasaSpaceChallenge.png";
+
+// import ntiThumb from "./assets/nti-career-thumb.jpg";
+import ntiVideo from "./assets/nti-career.mp4";
+
+import clarioImage from "./assets/clario.jpg";
 export const config = {
   meta: {
     siteTitle: "Mohamed Elfarsisi — Software Engineer",
@@ -20,11 +29,11 @@ export const config = {
     location: "Tanta, Egypt",
   },
 
-  about: {
-    title: "About Me",
-    description:
-      "I'm a Computer Science student at Tanta University focused on becoming a strong software engineer. My current direction is C# and .NET, with practical experience across backend development, REST APIs, databases, and full-stack systems. I've also worked with Angular, Node.js, Express.js, Laravel, and AI-related technologies.",
-  },
+about: {
+  title: "About Me",
+
+  description: `I’ve always been curious about how things work. My journey into programming started with a simple suggestion from my mother: “Try programming.” I did — and that mindset took me from joining NASA Space Apps Challenge 2025 with only a tablet to becoming a Global Nominee, then starting my real software engineering journey with my first laptop. I’m still learning, still building, and still asking the same question: Why not just try?`
+},
 
   experiences: [
     {
@@ -98,57 +107,59 @@ export const config = {
     },
   ],
 
-  projects: [
-    {
-      id: 1,
-      title: "Clario — AI-Powered Career Intelligence Platform",
-      category: "AI / Backend",
-      technologies: "Python, PostgreSQL, NLP",
-      image: "/images/placeholder.webp",
-      description:
-        "Building an ML-first platform that parses resumes, structures career profiles, and evaluates Opportunity Fit, Skill Gaps, and Career Alignment. Designing a database-first PostgreSQL architecture and an intelligence pipeline using NLP, embeddings, semantic matching, and LLM-based reasoning.",
-      link: "",
-    },
+ projects: [
+  {
+    id: 1,
+    title: "Clario — AI-Powered Career Intelligence Platform",
+    category: "AI / Backend",
+    technologies: "Python, PostgreSQL, NLP",
+    image: clarioImage,
+    description:
+      "Building an ML-first platform that parses resumes, structures career profiles, and evaluates Opportunity Fit, Skill Gaps, and Career Alignment. Designing a database-first PostgreSQL architecture and an intelligence pipeline using NLP, embeddings, semantic matching, and LLM-based reasoning.",
+    link: "https://github.com/mohamed-elfrsisi/Clario",
+  },
 
-    {
-      id: 2,
-      title: "ERB System",
-      category: "Full Stack",
-      technologies: "Angular 16, Node.js, Express.js, MongoDB",
-      image: "/images/placeholder.webp",
-      description:
-        "Worked on HR, Sales, and Inventory modules as part of a 4-person team, covering 15 CRUD modules across 83 RESTful endpoints.",
-      link: "",
-    },
+  {
+    id: 2,
+    title: "ERB System",
+    category: "Full Stack",
+    technologies: "Angular 16, Node.js, Express.js, MongoDB",
+    // image: erbThumb,
+    video: erbVideo,
+    description:
+      "Worked on HR, Sales, and Inventory modules as part of a 4-person team, covering 15 CRUD modules across 83 RESTful endpoints.",
+    link: "https://github.com/OnlyReal-LLC/ERB-System",
+  },
 
-    {
-      id: 3,
-      title: "NASA Space Habitat",
-      category: "AI / Full Stack",
-      technologies: "PHP, Python, AI, NASA APIs",
-      image: "/images/placeholder.webp",
-      description:
-        "Global Nominee at NASA Space Apps Challenge 2025 and ranked in the top 1% globally as 1 of 280 finalist teams from 28,000+ teams across 150+ countries. Built an AI-powered planning system for sustainable Moon and Mars habitats using NASA public APIs.",
-      link: "",
-    },
+  {
+    id: 3,
+    title: "NASA Space Habitat",
+    category: "AI / Full Stack",
+    technologies: "PHP, Python, AI, NASA APIs",
+    image: nasaImage,
+    description:
+      "Global Nominee at NASA Space Apps Challenge 2025 and ranked in the top 1% globally as 1 of 280 finalist teams from 28,000+ teams across 150+ countries. Built an AI-powered planning system for sustainable Moon and Mars habitats using NASA public APIs.",
+    link: "",
+  },
 
-    {
-      id: 4,
-      title: "NTI Career Platform",
-      category: "Full Stack",
-      technologies: "Laravel, PHP, MySQL, Bootstrap, Git",
-      image: "/images/placeholder.webp",
-      description:
-        "Worked on a production job platform with trainee profiles, company dashboards, and job-search workflows using Laravel MVC and MySQL.",
-      link: "",
-    },
-  ],
+  {
+    id: 4,
+    title: "NTI Career Platform",
+    category: "Full Stack",
+    technologies: "Laravel, PHP, MySQL, Bootstrap, Git",
+    // image: ntiThumb,
+    video: ntiVideo,
+    description:
+      "Worked on a production job platform with trainee profiles, company dashboards, and job-search workflows using Laravel MVC and MySQL.",
+    link: "https://github.com/MahmoudEbrahimmm/ForsaHub",
+  },
+],
 
   contact: {
     email: "mohamedelfrsisi@gmail.com",
     github: "https://github.com/mohamed-elfrsisi",
     linkedin: "https://linkedin.com/in/mohamed-elfarsisi",
-    x: "https://x.com/M_Elfasisi"
+    x: "https://x.com/M_Elfasisi",
   },
 
   skills: {
